@@ -1,5 +1,5 @@
-# Movie List
-
+ie List
+EKSUTURA THICC
 [Intermediate] AWS, S3, Api-Gatway, Lambda, RDS, Serverless - Intro full stack project using amazon rds
 
 ## Objective
@@ -22,7 +22,7 @@ You will be creating a full stack application. A client will be able to make HTT
 - create serverless template ```serverless create --template aws-nodejs```
 - npm install `pg`
 - npm install `pg-pool`
-#### File Structure 
+#### File Structure
 ```
 movie-list
 |
@@ -57,11 +57,16 @@ movie-list
 
 - run `aws rds describe-db-instances` to check if your database has been created
 
-- run `psql --host instanceendpoint --port 5432 --username username --dbname dbname` to connect to your database instance 
+db-link(jomari): jomari.cb9co1xxtizk.us-west-2.rds.amazonaws.com
+db-name:db_jomari
+user:jomos
+pass:youwish
+
+- run `psql --host instanceendpoint --port 5432 --username username --dbname dbname` to connect to your database instance
 
 - When connected to your database, create a table with the following columns:
   - id, title , year, genre
-  
+
  ## Steps
  1. Inside your `lambdas` directory, you will create 4 lambda function routes (GET, POST, UPDATE, DELETE)
     - Add the following code snippet in your POST function in your `serverless.yml`:
