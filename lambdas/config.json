@@ -1,0 +1,8 @@
+{
+"host" : "jomari.cb9co1xxtizk.us-west-2.rds.amazonaws.com",
+"database" : "db_jomari",
+"user" : "jomos",
+"password" : "password1234",
+"port" : 5432,
+"table" : "movies_list"
+}

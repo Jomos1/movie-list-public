@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: aws-nodejs # NOTE: update this with your service name
+service: aws-jomari # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -20,6 +20,7 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs6.10
+  region: us-west-2
 
 # you can overwrite defaults here
 #  stage: dev
@@ -55,41 +56,34 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello1
+  get:
+    handler: lambdas/get.get
     events:
       - http:
-          path: hello1
-          method: post
-          cors: true
-          integration: lambda
-              request:
-                  passThrough: WHEN_NO_TEMPLATES
-                  template:
-                    application/x-www-form-urlencoded: '{ "body" : "$input.body" }'
-    handler: handler.hello2
-    events:
-      - http:
-          path: hello2
+          path: get
           method: get
           cors:
-    handler: handler.hello3
+            origin: '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: false
+  post:
+    handler: lambdas/post.post
     events:
       - http:
-          path: hello3
-          method: update
-          cors:
-    handler: handler.hello4
-    events:
-      - http:
-          path: hello4
-          method: delete
-          cors:
-integration: lambda
-     request:
-        passThrough: WHEN_NO_TEMPLATES
-        template:
-          application/x-www-form-urlencoded: '{ "body" : "$input.body" }'
+          path: post
+          method: post
+          integration: lambda
+          request:
+            passThrough: WHEN_NO_TEMPLATES
+            template:
+              application/x-www-form-urlencoded: '{ "body" : "$input.body" }'
+
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
